@@ -22,7 +22,7 @@ public class MarcaPneu extends GenericModel {
 
     @Override
     public String toString() {
-        return "MarcaPneu {" +
+        return "Marca {" +
                 "id='" + this.getId() + "\'" +
                 "descricao='" + descricao + "\'" +
                 '}';
