@@ -37,7 +37,7 @@ public class EixoDAO extends ConexaoDB {
         try (PreparedStatement preparedStatement = prapararSQL(INSERT_EIXO_SQL)) {
             preparedStatement.setString(1, entidade.getDescricao());
             preparedStatement.setString(2, entidade.getPosicao());
-            preparedStatement.setString(3, entidade.getidTipoEixo());
+            preparedStatement.setString(3, entidade.getIdTipoEixo());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             printSQLException(e);
