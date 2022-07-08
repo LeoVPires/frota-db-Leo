@@ -56,7 +56,7 @@ public class PneuReservaDAO extends ConexaoDB {
                 String observacao = rs.getString("observacao");
                 Integer idVeiculo = rs.getInt("id_veiculo");
                 Integer idPneu = rs.getInt("id_pneu");
-                entidade = new PneuReserva(id, observacao, IdVeiculo, idPneu);
+                entidade = new PneuReserva(id, observacao, idVeiculo, idPneu);
             }
         } catch (SQLException e) {
             printSQLException(e);
@@ -76,7 +76,7 @@ public class PneuReservaDAO extends ConexaoDB {
                 String observacao = rs.getString("observacao");
                 Integer idVeiculo = rs.getInt("id_veiculo");
                 Integer idPneu = rs.getInt("id_pneu");
-                entidades.add(new PneuReserva(id, observacao, idPneu));
+                entidades.add(new PneuReserva(id, observacao, idVeiculo, idPneu));
             }
         } catch (SQLException e) {
             printSQLException(e);
