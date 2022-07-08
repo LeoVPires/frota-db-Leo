@@ -66,7 +66,7 @@ public class Pneu extends GenericModel {
         return idMarcaPneu;
     }
 
-    public void setIdMarca(Integer idMarcaPneu) {
+    public void setIdMarcaPneu(Integer idMarcaPneu) {
         this.idMarcaPneu = idMarcaPneu;
     }
 

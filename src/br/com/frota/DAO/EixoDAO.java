@@ -55,7 +55,7 @@ public class EixoDAO extends ConexaoDB {
             while (rs.next()) {
                 String descricao = rs.getString("descricao");
                 Integer posicao = rs.getInt("posicao");
-                Integer idTipoEixo = rs.getString("id_tipo_eixo");
+                Integer idTipoEixo = rs.getInt("id_tipo_eixo");
                 entidade = new Eixo(id, descricao, posicao, idTipoEixo);
             }
         } catch (SQLException e) {

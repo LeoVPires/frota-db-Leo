@@ -5,13 +5,13 @@ import javax.swing.text.Position;
 public class Eixo extends GenericModel {
     private String descricao;
     private Integer posicao;
-    private Integer idMarca;
+    private Integer idTipoEixo;
 
     public Eixo(String descricao) {
         this.descricao = descricao;
     }
 
-    public Eixo(Integer id, String descricao, Integer posicao, Integer idMarca) {
+    public Eixo(Integer id, String descricao, Integer posicao, Integer idTipoEixo) {
         this.descricao = descricao;
         this.posicao = posicao;
         this.idTipoEixo = idTipoEixo;

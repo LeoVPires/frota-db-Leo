@@ -35,12 +35,12 @@ public class PneuDAO extends ConexaoDB {
 
     public void insertPneu(Pneu entidade) {
         try (PreparedStatement preparedStatement = prapararSQL(INSERT_PNEU_SQL)) {
-            preparedStatement.setString(1, entidade.getRaio());
+            preparedStatement.setInt(1, entidade.getRaio());
             preparedStatement.setString(2, entidade.getPerfil());
             preparedStatement.setString(3, entidade.getLargura());
             preparedStatement.setString(4, entidade.getIndiceCarga());
             preparedStatement.setString(5, entidade.getIndiceVelocidade());
-            preparedStatement.setString(6, entidade.getIdMarcaPneu());
+            preparedStatement.setInt(6, entidade.getIdMarcaPneu());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             printSQLException(e);
@@ -56,12 +56,12 @@ public class PneuDAO extends ConexaoDB {
             ResultSet rs = preparedStatement.executeQuery();
 
             while (rs.next()) {
-                Integer raio = rs.getString("raio");
+                Integer raio = rs.getInt("raio");
                 String perfil = rs.getString("perfil");
                 String largura = rs.getString("largura");
                 String indiceCarga = rs.getString("indice_carga");
                 String indiceVelocidade = rs.getString("indice_velocidade");
-                Integer IdMarcaPneu = rs.getString("id_marca_pneu");
+                Integer IdMarcaPneu = rs.getInt("id_marca_pneu");
                 entidade = new Pneu(id, raio, perfil, largura, indiceCarga, indiceVelocidade, IdMarcaPneu);
             }
         } catch (SQLException e) {
