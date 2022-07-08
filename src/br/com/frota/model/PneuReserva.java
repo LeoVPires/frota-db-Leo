@@ -18,11 +18,11 @@ public class PneuReserva extends GenericModel {
         super.setId(id);
     }
 
-    public String getDescricao() {
+    public String getObservacao() {
         return observacao;
     }
 
-    public void setDescricao(String observacao) {
+    public void setObservacao(String observacao) {
         this.observacao = observacao;
     }
     
