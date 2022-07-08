@@ -14,7 +14,7 @@ public class Eixo extends GenericModel {
     public Eixo(Integer id, String descricao, Integer posicao, Integer idMarca) {
         this.descricao = descricao;
         this.posicao = posicao;
-        this.idMarca = idMarca;
+        this.idTipoEixo = idTipoEixo;
         super.setId(id);
     }
 
@@ -34,12 +34,12 @@ public class Eixo extends GenericModel {
         this.posicao = posicao;
     }
 
-    public Integer getIdMarca() {
-        return idMarca;
+    public Integer getIdTipoEixo() {
+        return idTipoEixo;
     }
 
-    public void setIdMarca(Integer idMarca) {
-        this.idMarca = idMarca;
+    public void setIdTipoEixo(Integer idTipoEixo) {
+        this.idTipoEixo = idTipoEixo;
     }
 
     @Override
@@ -48,7 +48,7 @@ public class Eixo extends GenericModel {
                 "id='" + this.getId() + "\'" +
                 "descricao='" + descricao + "\'" +
                 "posicao='" + posicao + "\'" +
-                "id_marca='" + idMarca + "\'" +
+                "id_tipo_eixo='" + idTipoEixo + "\'" +
                 '}';
     }
 }
