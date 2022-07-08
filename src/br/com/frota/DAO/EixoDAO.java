@@ -10,11 +10,11 @@ import java.util.List;
 
 public class EixoDAO extends ConexaoDB {
 
-    private static final String INSERT_VEICULO_SQL = "INSERT INTO eixo (descricao, posicao, id_tipo_eixo) VALUES (?, ?, ?);";
-    private static final String SELECT_VEICULO_BY_ID = "SELECT id, descricao, posicao, id_tipo_eixo FROM eixo WHERE id = ?";
-    private static final String SELECT_ALL_VEICULO = "SELECT * FROM eixo;";
-    private static final String DELETE_VEICULO_SQL = "DELETE FROM eixo WHERE id = ?;";
-    private static final String UPDATE_VEICULO_SQL = "UPDATE eixo SET descricao = ?, posicao = ?, id_tipo_eixo = ? WHERE id = ?;";
+    private static final String INSERT_EIXO_SQL = "INSERT INTO eixo (descricao, posicao, id_tipo_eixo) VALUES (?, ?, ?);";
+    private static final String SELECT_EIXO_BY_ID = "SELECT id, descricao, posicao, id_tipo_eixo FROM eixo WHERE id = ?";
+    private static final String SELECT_ALL_EIXO = "SELECT * FROM eixo;";
+    private static final String DELETE_EIXO_SQL = "DELETE FROM eixo WHERE id = ?;";
+    private static final String UPDATE_EIXO_SQL = "UPDATE eixo SET descricao = ?, posicao = ?, id_tipo_eixo = ? WHERE id = ?;";
     private static final String TOTAL = "SELECT count(1) FROM eixo;";
 
     public Integer count() {
@@ -34,7 +34,7 @@ public class EixoDAO extends ConexaoDB {
     }
 
     public void insertEixo(Eixo entidade) {
-        try (PreparedStatement preparedStatement = prapararSQL(INSERT_VEICULO_SQL)) {
+        try (PreparedStatement preparedStatement = prapararSQL(INSERT_EIXO_SQL)) {
             preparedStatement.setString(1, entidade.getDescricao());
             preparedStatement.setString(2, entidade.getPosicao());
             preparedStatement.setString(3, entidade.getidTipoEixo());
@@ -48,7 +48,7 @@ public class EixoDAO extends ConexaoDB {
 
     public Eixo selectEixo(int id) {
         Eixo entidade = null;
-        try (PreparedStatement preparedStatement = prapararSQL(SELECT_VEICULO_BY_ID)) {
+        try (PreparedStatement preparedStatement = prapararSQL(SELECT_EIXO_BY_ID)) {
             preparedStatement.setInt(1, id);
             ResultSet rs = preparedStatement.executeQuery();
 
@@ -68,7 +68,7 @@ public class EixoDAO extends ConexaoDB {
 
     public List<Eixo> selectAllEixos() {
         List<Eixo> entidades = new ArrayList<>();
-        try (PreparedStatement preparedStatement = prapararSQL(SELECT_ALL_VEICULO)) {
+        try (PreparedStatement preparedStatement = prapararSQL(SELECT_ALL_EIXO)) {
             ResultSet rs = preparedStatement.executeQuery();
 
             while (rs.next()) {
@@ -87,7 +87,7 @@ public class EixoDAO extends ConexaoDB {
     }
 
     public boolean deleteEixo(int id) throws SQLException {
-        try (PreparedStatement statement = prapararSQL(DELETE_VEICULO_SQL)) {
+        try (PreparedStatement statement = prapararSQL(DELETE_EIXO_SQL)) {
             statement.setInt(1, id);
             return statement.executeUpdate() > 0;
         } catch (ClassNotFoundException e) {
@@ -96,7 +96,7 @@ public class EixoDAO extends ConexaoDB {
     }
 
     public boolean updateEixo(Eixo entidade) throws SQLException {
-        try (PreparedStatement statement = prapararSQL(UPDATE_VEICULO_SQL)) {
+        try (PreparedStatement statement = prapararSQL(UPDATE_EIXO_SQL)) {
             statement.setString(1, entidade.getDescricao());
             statement.setString(2, entidade.getPosicao());
             statement.setString(3, entidade.getIdTipoEixo());
