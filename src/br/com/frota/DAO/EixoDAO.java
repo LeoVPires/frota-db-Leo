@@ -36,8 +36,8 @@ public class EixoDAO extends ConexaoDB {
     public void insertEixo(Eixo entidade) {
         try (PreparedStatement preparedStatement = prapararSQL(INSERT_EIXO_SQL)) {
             preparedStatement.setString(1, entidade.getDescricao());
-            preparedStatement.setString(2, entidade.getPosicao());
-            preparedStatement.setString(3, entidade.getIdTipoEixo());
+            preparedStatement.setInt(2, entidade.getPosicao());
+            preparedStatement.setInt(3, entidade.getIdTipoEixo());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             printSQLException(e);
@@ -54,7 +54,7 @@ public class EixoDAO extends ConexaoDB {
 
             while (rs.next()) {
                 String descricao = rs.getString("descricao");
-                Integer posicao = rs.getString("posicao");
+                Integer posicao = rs.getInt("posicao");
                 Integer idTipoEixo = rs.getString("id_tipo_eixo");
                 entidade = new Eixo(id, descricao, posicao, idTipoEixo);
             }
@@ -74,8 +74,8 @@ public class EixoDAO extends ConexaoDB {
             while (rs.next()) {
                 int id = rs.getInt("id");
                 String descricao = rs.getString("descricao");
-                Integer posicao = rs.getString("posicao");
-                Integer idTipoEixo = rs.getString("id_tipo_eixo");
+                Integer posicao = rs.getInt("posicao");
+                Integer idTipoEixo = rs.getInt("id_tipo_eixo");
                 entidades.add(new Eixo(id, descricao, idTipoEixo));
             }
         } catch (SQLException e) {
@@ -99,7 +99,7 @@ public class EixoDAO extends ConexaoDB {
         try (PreparedStatement statement = prapararSQL(UPDATE_EIXO_SQL)) {
             statement.setString(1, entidade.getDescricao());
             statement.setString(2, entidade.getPosicao());
-            statement.setString(3, entidade.getIdTipoEixo());
+            statement.setInt(3, entidade.getIdTipoEixo());
             statement.setInt(4, entidade.getId());
 
             return statement.executeUpdate() > 0;

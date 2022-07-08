@@ -36,7 +36,7 @@ public class VeiculoDAO extends ConexaoDB {
     public void insertVeiculo(Veiculo entidade) {
         try (PreparedStatement preparedStatement = prapararSQL(INSERT_VEICULO_SQL)) {
             preparedStatement.setString(1, entidade.getDescricao());
-            preparedStatement.setString(2, entidade.getidMarca());
+            preparedStatement.setInt(2, entidade.getIdMarca());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             printSQLException(e);
@@ -53,7 +53,7 @@ public class VeiculoDAO extends ConexaoDB {
 
             while (rs.next()) {
                 String descricao = rs.getString("descricao");
-                Integer idMarca = rs.getString("id_marca");
+                Integer idMarca = rs.getInt("id_marca");
                 entidade = new Veiculo(id, descricao, idMarca);
             }
         } catch (SQLException e) {
@@ -72,7 +72,7 @@ public class VeiculoDAO extends ConexaoDB {
             while (rs.next()) {
                 int id = rs.getInt("id");
                 String descricao = rs.getString("descricao");
-                Integer idMarca = rs.getString("id_marca");
+                Integer idMarca = rs.getInt("id_marca");
                 entidades.add(new Veiculo(id, descricao, idMarca));
             }
         } catch (SQLException e) {
@@ -95,7 +95,7 @@ public class VeiculoDAO extends ConexaoDB {
     public boolean updateVeiculo(Veiculo entidade) throws SQLException {
         try (PreparedStatement statement = prapararSQL(UPDATE_VEICULO_SQL)) {
             statement.setString(1, entidade.getDescricao());
-            statement.setString(2, entidade.getIdMarca());
+            statement.setInt(2, entidade.getIdMarca());
             statement.setInt(3, entidade.getId());
 
             return statement.executeUpdate() > 0;
