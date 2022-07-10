@@ -8,10 +8,6 @@ public class Pneu extends GenericModel {
     private String indiceVelocidade;
     private Integer idMarcaPneu;
 
-    public Pneu(String descricao) {
-        this.descricao = descricao;
-    }
-
     public Pneu(Integer id, Integer raio, String perfil, String largura, String indiceCarga, String indiceVelocidade, Integer idMarcaPneu) {
         this.raio = raio;
         this.perfil = perfil;
