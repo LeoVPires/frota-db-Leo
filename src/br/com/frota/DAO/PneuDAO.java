@@ -14,7 +14,7 @@ public class PneuDAO extends ConexaoDB {
     private static final String SELECT_PNEU_BY_ID = "SELECT id, raio, perfil, largura, indice_carga, indice_velocidade, id_marca_pneu FROM pneu WHERE id = ?";
     private static final String SELECT_ALL_PNEU = "SELECT * FROM pneu;";
     private static final String DELETE_PNEU_SQL = "DELETE FROM pneu WHERE id = ?;";
-    private static final String UPDATE_PNEU_SQL = "UPDATE pneu SET  reio = ?, perfil = ?, largura = ?, indice_carga = ?, indice_velocidade = ?, id_marca_pneu = ?, WHERE id = ?;";
+    private static final String UPDATE_PNEU_SQL = "UPDATE pneu SET  reio = ?, perfil = ?, largura = ?, indice_carga = ?, indice_velocidade = ?, id_marca_pneu = ? WHERE id = ?;";
     private static final String TOTAL = "SELECT count(1) FROM pneu;";
 
     public Integer count() {
@@ -61,8 +61,8 @@ public class PneuDAO extends ConexaoDB {
                 String largura = rs.getString("largura");
                 String indiceCarga = rs.getString("indice_carga");
                 String indiceVelocidade = rs.getString("indice_velocidade");
-                Integer IdMarcaPneu = rs.getInt("id_marca_pneu");
-                entidade = new Pneu(id, raio, perfil, largura, indiceCarga, indiceVelocidade, IdMarcaPneu);
+                Integer idMarcaPneu = rs.getInt("id_marca_pneu");
+                entidade = new Pneu(id, raio, perfil, largura, indiceCarga, indiceVelocidade, idMarcaPneu);
             }
         } catch (SQLException e) {
             printSQLException(e);
@@ -84,8 +84,8 @@ public class PneuDAO extends ConexaoDB {
                 String largura = rs.getString("largura");
                 String indiceCarga = rs.getString("indice_carga");
                 String indiceVelocidade = rs.getString("indice_velocidade");
-                Integer IdMarcaPneu = rs.getInt("id_marca_pneu");
-                entidades.add(new Pneu(id, raio, perfil, largura, indiceCarga, indiceVelocidade, IdMarcaPneu));
+                Integer idMarcaPneu = rs.getInt("id_marca_pneu");
+                entidades.add(new Pneu(id, raio, perfil, largura, indiceCarga, indiceVelocidade, idMarcaPneu));
             }
         } catch (SQLException e) {
             printSQLException(e);

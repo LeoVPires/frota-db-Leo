@@ -76,7 +76,7 @@ public class EixoDAO extends ConexaoDB {
                 String descricao = rs.getString("descricao");
                 Integer posicao = rs.getInt("posicao");
                 Integer idTipoEixo = rs.getInt("id_tipo_eixo");
-                entidades.add(new Eixo(id, descricao, idTipoEixo));
+                entidades.add(new Eixo(id, descricao, posicao, idTipoEixo));
             }
         } catch (SQLException e) {
             printSQLException(e);
@@ -98,7 +98,7 @@ public class EixoDAO extends ConexaoDB {
     public boolean updateEixo(Eixo entidade) throws SQLException {
         try (PreparedStatement statement = prapararSQL(UPDATE_EIXO_SQL)) {
             statement.setString(1, entidade.getDescricao());
-            statement.setString(2, entidade.getPosicao());
+            statement.setInt(2, entidade.getPosicao());
             statement.setInt(3, entidade.getIdTipoEixo());
             statement.setInt(4, entidade.getId());
 

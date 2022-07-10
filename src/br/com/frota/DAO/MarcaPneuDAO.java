@@ -10,14 +10,14 @@ import java.util.List;
 
 public class MarcaPneuDAO extends ConexaoDB {
 
-    private static final String INSERT_MARCA_SQL = "INSERT INTO marca_pneu (descricao) VALUES (?);";
-    private static final String SELECT_MARCA_BY_ID = "SELECT id, descricao FROM marca_pneu WHERE id = ?";
-    private static final String SELECT_ALL_MARCA = "SELECT * FROM marca_pneu;";
-    private static final String DELETE_MARCA_SQL = "DELETE FROM marca_pneu WHERE id = ?;";
-    private static final String UPDATE_MARCA_SQL = "UPDATE marca_pneu SET descricao = ? WHERE id = ?;";
+    private static final String INSERT_MARCA_PNEU_SQL = "INSERT INTO marca_pneu (descricao) VALUES (?);";
+    private static final String SELECT_MARCA_PNEU_BY_ID = "SELECT id, descricao FROM marca_pneu WHERE id = ?";
+    private static final String SELECT_ALL_MARCA_PNEU = "SELECT * FROM marca_pneu;";
+    private static final String DELETE_MARCA_PNEU_SQL = "DELETE FROM marca_pneu WHERE id = ?;";
+    private static final String UPDATE_MARCA_PNEU_SQL = "UPDATE marca_pneu SET descricao = ? WHERE id = ?;";
 
     public void insertMarcaPneu(MarcaPneu entidade) {
-        try (PreparedStatement preparedStatement = prapararSQL(INSERT_MARCA_SQL)) {
+        try (PreparedStatement preparedStatement = prapararSQL(INSERT_MARCA_PNEU_SQL)) {
             preparedStatement.setString(1, entidade.getDescricao());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
@@ -29,7 +29,7 @@ public class MarcaPneuDAO extends ConexaoDB {
 
     public MarcaPneu selectMarcaPneu(int id) {
         MarcaPneu entidade = null;
-        try (PreparedStatement preparedStatement = prapararSQL(SELECT_MARCA_BY_ID)) {
+        try (PreparedStatement preparedStatement = prapararSQL(SELECT_MARCA_PNEU_BY_ID)) {
             preparedStatement.setInt(1, id);
             ResultSet rs = preparedStatement.executeQuery();
 
@@ -47,7 +47,7 @@ public class MarcaPneuDAO extends ConexaoDB {
 
     public List<MarcaPneu> selectAllMarcaPneus() {
         List<MarcaPneu> entidades = new ArrayList<>();
-        try (PreparedStatement preparedStatement = prapararSQL(SELECT_ALL_MARCA)) {
+        try (PreparedStatement preparedStatement = prapararSQL(SELECT_ALL_MARCA_PNEU)) {
             ResultSet rs = preparedStatement.executeQuery();
 
             while (rs.next()) {
@@ -64,7 +64,7 @@ public class MarcaPneuDAO extends ConexaoDB {
     }
 
     public boolean deleteMarcaPneu(int id) throws SQLException {
-        try (PreparedStatement statement = prapararSQL(DELETE_MARCA_SQL)) {
+        try (PreparedStatement statement = prapararSQL(DELETE_MARCA_PNEU_SQL)) {
             statement.setInt(1, id);
             return statement.executeUpdate() > 0;
         } catch (ClassNotFoundException e) {
@@ -73,7 +73,7 @@ public class MarcaPneuDAO extends ConexaoDB {
     }
 
     public boolean updateMarcaPneu(MarcaPneu entidade) throws SQLException {
-        try (PreparedStatement statement = prapararSQL(UPDATE_MARCA_SQL)) {
+        try (PreparedStatement statement = prapararSQL(UPDATE_MARCA_PNEU_SQL)) {
             statement.setString(1, entidade.getDescricao());
             statement.setInt(2, entidade.getId());
 
